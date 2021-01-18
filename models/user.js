@@ -59,6 +59,7 @@ function validateUser(user) {
   };
 
   return Joi.validate(user, schema);
+  
 }
 
 exports.User = User;
