@@ -51,6 +51,8 @@ router.delete("/:id", [auth, admin, validateObjectId], async (req, res) => {
 });
 
 router.get("/:id", validateObjectId, async (req, res) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id))
+      return  res.status(404).send("invalid id");
   const genre = await Genre.findById(req.params.id).select("-__v");
 
   if (!genre)
