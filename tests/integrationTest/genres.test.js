@@ -2,9 +2,10 @@ const request = require('supertest')
 const {Genre} = require('../../models/genre')
 
 describe('DB',()=>{
+    let server;
     beforeEach(()=>{server=require('../../index')});
     afterEach(async()=>{
-    server.close();
+    await server.close();
     await Genre.remove({});
     });
     describe('GET :/', ()=>{
